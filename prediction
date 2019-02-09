@@ -1,0 +1,40 @@
+
+############################################
+######     import python module  ##########
+###########################################
+
+import pandas as pd 
+import numpy as np
+import matplotlib.pyplot as plt 
+import seaborn as sns
+%matplotlib inline
+
+
+############################################
+######   Read DataSet from csv file   ######
+###########################################
+
+
+df = pd.read_csv('C://Users//Utkarsh//Downloads//Compressed//heart.csv')
+df.head()
+
+############################################
+######   plot pairplot using seaborn   #####
+############################################
+
+sns.pairplot(df)
+
+############################################
+###### code for prediction and loc target and data   #####
+############################################
+
+data = df.iloc[:,0:-1]
+target = df.iloc[:,13:14]
+from sklearn.neighbors import KNeighborsClassifier
+reg = KNeighborsClassifier()
+reg.fit(data,target)
+
+# dummy example for prediction
+reg.predict([[56,1,1,120,236,0,1,178,0,0.8,2,0,2]])
+
+reg.predict([[68,1,1,110,244,0,1,118,0,0.8,2,0,2]])
